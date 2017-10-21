@@ -5,12 +5,12 @@ const app         = express();
 const bodyParser  = require('body-parser');
 const morgan      = require('morgan');
 const mongoose    = require('mongoose');
-const passport	= require('passport');
+const passport	  = require('passport');
 const config      = require('./config/db');
 const User        = require('./models/user.js');
 const port        = process.env.PORT || 8080;
 const jwt         = require('jwt-simple');
-const apiRoutes = express.Router();
+const apiRoutes   = express.Router();
 //const seed = require('seed')
 
 mongoose.connect(config.database);
@@ -28,6 +28,31 @@ function getToken(headers) {
         return null;
     }
 };
+
+function listen(){
+    var Web3 = require('web3');
+
+    var web3 = new Web3(new Web3.providers.HttpProvider('http://localhost:8545'));
+    // can be 'latest' or 'pending'
+    var filter = web3.eth.filter('latest');
+
+    // watch for changes
+    filter.watch(function (error, result){
+        if (!error)
+            console.log(result);
+    });
+
+    return filter
+}
+
+var filter = listen()
+
+app.use(function (req, res, next) {
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+    next();
+});
+
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
