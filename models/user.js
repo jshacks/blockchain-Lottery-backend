@@ -12,6 +12,10 @@ var UserSchema = new Schema({
         type: String,
         required: true,
     },
+    walletID: {
+        type: String,
+        required: true,
+    },
 });
 
 UserSchema.pre('save', function (next) {
