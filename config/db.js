@@ -1,4 +1,4 @@
 module.exports = {
     'secret': 'jshacks',
-    'database': 'mongodb://localhost/node-rest-auth',
+    'database': 'mongodb://' + (process.env.mongoserver || 'localhost') + '/node-rest-auth',
 };
