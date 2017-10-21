@@ -1,0 +1,37 @@
+{
+  "name": "blockchain-lottery-backend",
+  "version": "1.0.0",
+  "description": "server for jshacks",
+  "main": "app.js",
+  "dependencies": {
+    "bcrypt": "^0.8.5",
+    "body-parser": "~1.9.2",
+    "express": "~4.9.8",
+    "jwt-simple": "^0.3.1",
+    "mongoose": "~4.2.4",
+    "morgan": "~1.5.0",
+    "passport": "^0.3.0",
+    "passport-jwt": "^1.2.1"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jshacks/blockchain-Lottery-backend.git"
+  },
+  "keywords": [
+    "jshacks"
+  ],
+  "author": "ed",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jshacks/blockchain-Lottery-backend/issues"
+  },
+  "homepage": "https://github.com/jshacks/blockchain-Lottery-backend#readme",
+  "devDependencies": {
+    "babel-eslint": "^8.0.1",
+    "eslint": "^4.9.0",
+    "mongod": "^2.0.0"
+  }
+}
