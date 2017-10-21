@@ -56,7 +56,7 @@ apiRoutes.post('/signup', function (req, res) {
     }
 });
 
-apiRoutes.post('/authenticate', function (req, res) {
+apiRoutes.post('/auth', function (req, res) {
     User.findOne({
         email: req.body.email,
     }, function (err, user) {
@@ -77,7 +77,7 @@ apiRoutes.post('/authenticate', function (req, res) {
     });
 });
 
-apiRoutes.get('/memberinfo', passport.authenticate('jwt', { session: false}),
+apiRoutes.get('/user', passport.authenticate('jwt', { session: false}),
     function (req, res) {
         var token = getToken(req.headers);
         if (token) {
@@ -101,4 +101,4 @@ apiRoutes.get('/memberinfo', passport.authenticate('jwt', { session: false}),
     });
 
 app.listen(port);
-console.log('There will be dragons: http://localhost:' + port);
+console.log('The poor are getting poorer at: http://localhost:' + port);
