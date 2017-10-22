@@ -11,7 +11,7 @@ const User        = require('./models/user.js');
 const port        = process.env.PORT || 8080;
 const jwt         = require('jwt-simple');
 const apiRoutes   = express.Router();
-var BigNumber = require('bignumber.js');
+var BigNumber     = require('bignumber.js');
 
 var Web3 = require('web3');
 var provider = new Web3(new Web3.providers.HttpProvider('http://localhost:8545'));
@@ -41,16 +41,14 @@ app.get('/', function (req, res) {
     MyContract.setProvider(provider.currentProvider);
 
     // Use Truffle as usual
-    let poc = MyContract.deployed().then(function(instance){
-            return instance.participantsRequired.call();
-        })
-        
-        .then(function(result) {
+    let poc = MyContract.deployed().then(function (instance){
+        return instance.participantsRequired.call();
+    }).then(function (result) {
         console.log(result.toString());
-        }, function(error) {
+    }, function (error) {
         console.log(error);
-        });
-        res.send("viata")
+    });
+    res.send("viata")
 });
 
 app.get('/test', function (req, res) {
