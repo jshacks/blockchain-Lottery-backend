@@ -34,25 +34,23 @@ var MyContractJSON  = require(path.join(__dirname, '/../blockchain-Lottery-solid
 // var filter = listen();
 
 
-app.get('/', function (req, res) {
-    var MyContract = contract(MyContractJSON);
-    //MyContract.setProvider(provider.currentProvider);
-
-    // Use Truffle as usual
-    let poc = MyContract.at('0xb2d351b5d787730e59f5c9c900f178a72b65b433').then(function (instance){
-        return instance.NewWinner.call();
-    }).then(function (result) {
-        console.log(result);
-    }, function (error) {
-        console.log(error);
-    });
-    res.send("viata")
-});
+var MyContract = contract(MyContractJSON);
+MyContract.setProvider(new Web3.providers.HttpProvider('http://138.68.105.52:8545'));
+// Use Truffle as usual
+var instance = MyContract.at('0x83aedfffd13c42b6e91ef6569e3823ed55ae58ce')
 
 app.get('/test', function (req, res) {
     res.send('Hello! The API is at http://localhost:' + port + '/api');
 });
 
+app.get('/lastWinner', function (req,res){
+    instance.lastWinner().then(function (lastWin){ res.send(lastWin)})
+})
+
+
+app.get('/participantsCount', function (req,res){
+    instance.participantsCounter().then(function (count){res.send(count.toString())})
+})
 
 app.listen(port);
 console.log('The poor are getting poorer at: http://localhost:' + port);
