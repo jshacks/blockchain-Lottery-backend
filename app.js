@@ -17,38 +17,36 @@ var contract        = require("truffle-contract");
 var path            = require('path');
 var MyContractJSON  = require(path.join(__dirname, '/../blockchain-Lottery-solidity/build/contracts/Lottery.json'));
 
-function listen(){
-
-    // can be 'latest' or 'pending'
-    var filter = provider.eth.filter('latest');
-
-    // watch for changes
-    filter.watch(function (error, result){
-        if (!error)
-            console.log(result);
-    });
-
-    return filter
-}
-
-var filter = listen();
+// function listen(){
+//
+//     // can be 'latest' or 'pending'
+//     var filter = provider.eth.filter('latest');
+//
+//     // watch for changes
+//     filter.watch(function (error, result){
+//         if (!error)
+//             console.log(result);
+//     });
+//
+//     return filter
+// }
+//
+// var filter = listen();
 
 
 app.get('/', function (req, res) {
     var MyContract = contract(MyContractJSON);
-    MyContract.setProvider(provider.currentProvider);
+    //MyContract.setProvider(provider.currentProvider);
 
     // Use Truffle as usual
-    let poc = MyContract.deployed().then(function(instance){
-            return instance.participantsRequired.call();
-        })
-
-        .then(function(result) {
-        console.log(result.toString());
-        }, function(error) {
+    let poc = MyContract.at('0xb2d351b5d787730e59f5c9c900f178a72b65b433').then(function (instance){
+        return instance.NewWinner.call();
+    }).then(function (result) {
+        console.log(result);
+    }, function (error) {
         console.log(error);
-        });
-        res.send("viata")
+    });
+    res.send("viata")
 });
 
 app.get('/test', function (req, res) {
