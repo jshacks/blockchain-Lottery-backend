@@ -3,7 +3,6 @@
 const express     = require('express');
 const app         = express();
 const bodyParser  = require('body-parser');
-const morgan      = require('morgan');
 const mongoose    = require('mongoose');
 const config      = require('./config/db');
 const User        = require('./models/user.js');
