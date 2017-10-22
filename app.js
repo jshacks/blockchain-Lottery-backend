@@ -30,6 +30,11 @@ var MyContractJSON  = require('./Lottery.json');
 //
 // var filter = listen();
 
+app.use(function (req, res, next) {
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+    next();
+});
 
 var MyContract = contract(MyContractJSON);
 MyContract.setProvider(new Web3.providers.HttpProvider('http://ww3.lucky9.ml'));
@@ -43,8 +48,7 @@ app.get('/test', function (req, res) {
 app.get('/lastWinner', function (req,res){
     instance.lastWinner().then(function (lastWin){ res.send(lastWin)})
       //.catch((err) => res.send(JSONerr))
-})
-;
+});
 
 app.get('/participantsCount', function (req,res){
     instance.participantsCounter().then(function (count){res.send(count.toString())})
