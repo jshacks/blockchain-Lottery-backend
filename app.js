@@ -3,9 +3,7 @@
 const express     = require('express');
 const app         = express();
 const bodyParser  = require('body-parser');
-const morgan      = require('morgan');
 const mongoose    = require('mongoose');
-const passport	  = require('passport');
 const config      = require('./config/db');
 const User        = require('./models/user.js');
 const port        = process.env.PORT || 8080;
@@ -34,7 +32,6 @@ function listen(){
 }
 
 var filter = listen();
-
 
 app.get('/', function (req, res) {
     var MyContract = contract(MyContractJSON);
