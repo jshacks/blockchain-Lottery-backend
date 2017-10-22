@@ -12,7 +12,7 @@ var BigNumber     = require('bignumber.js');
 var Web3            = require('web3');
 var contract        = require("truffle-contract");
 var path            = require('path');
-var MyContractJSON  = require('../blockchain-Lottery-solidity/build/contracts/Lottery.json');
+var MyContractJSON  = require('./Lottery.json');
 
 // function listen(){
 //
