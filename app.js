@@ -32,7 +32,7 @@ var MyContractJSON  = require('./Lottery.json');
 
 
 var MyContract = contract(MyContractJSON);
-MyContract.setProvider(new Web3.providers.HttpProvider('http://xxx.lucky9.ml'));
+MyContract.setProvider(new Web3.providers.HttpProvider('http://ww3.lucky9.ml'));
 // Use Truffle as usual
 var instance = MyContract.at('0x83aedfffd13c42b6e91ef6569e3823ed55ae58ce')
 
@@ -42,8 +42,9 @@ app.get('/test', function (req, res) {
 
 app.get('/lastWinner', function (req,res){
     instance.lastWinner().then(function (lastWin){ res.send(lastWin)})
+      //.catch((err) => res.send(JSONerr))
 })
-
+;
 
 app.get('/participantsCount', function (req,res){
     instance.participantsCounter().then(function (count){res.send(count.toString())})
