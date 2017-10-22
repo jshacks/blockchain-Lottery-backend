@@ -16,21 +16,6 @@ var contract        = require("truffle-contract");
 var path            = require('path');
 var MyContractJSON  = require(path.join(__dirname, '/../blockchain-Lottery-solidity/build/contracts/Lottery.json'));
 
-function listen(){
-
-    // can be 'latest' or 'pending'
-    var filter = provider.eth.filter('latest');
-
-    // watch for changes
-    filter.watch(function (error, result){
-        if (!error)
-            console.log(result);
-    });
-
-    return filter
-}
-
-var filter = listen();
 
 app.get('/', function (req, res) {
     var MyContract = contract(MyContractJSON);
