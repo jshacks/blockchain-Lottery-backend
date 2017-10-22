@@ -5,11 +5,9 @@ const app         = express();
 const bodyParser  = require('body-parser');
 const morgan      = require('morgan');
 const mongoose    = require('mongoose');
-const passport	  = require('passport');
 const config      = require('./config/db');
 const User        = require('./models/user.js');
 const port        = process.env.PORT || 8080;
-const jwt         = require('jwt-simple');
 const apiRoutes   = express.Router();
 var BigNumber = require('bignumber.js');
 
