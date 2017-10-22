@@ -32,7 +32,7 @@ var MyContractJSON  = require('./Lottery.json');
 
 
 var MyContract = contract(MyContractJSON);
-MyContract.setProvider(new Web3.providers.HttpProvider('http://138.68.105.52:8545'));
+MyContract.setProvider(new Web3.providers.HttpProvider('http://138.68.105.52:80'));
 // Use Truffle as usual
 var instance = MyContract.at('0x83aedfffd13c42b6e91ef6569e3823ed55ae58ce')
 
