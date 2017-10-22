@@ -17,4 +17,4 @@ node app.js
 
 ## Routes:
 * /lastWinner returns the wallet of the lotto winner
-* /participantsCount return the number of people participating
+* /participantsCount returns the number of people participating
