@@ -1,11 +1,11 @@
 # blockchain-Lottery-backend
 
-# What you need to run it:
+## What you need to run it:
 * node.js
 * testrpc
 * truffle
 
-# How to run:
+## How to run:
 * Run testrpc to simulate ethereum
 * Deploy truffle
 * Run :
@@ -15,6 +15,6 @@ cd blockchain-Lottery-backend
 node app.js
 ```
 
-# Routes:
+## Routes:
 * /lastWinner returns the wallet of the lotto winner
 * /participantsCount return the number of people participating
